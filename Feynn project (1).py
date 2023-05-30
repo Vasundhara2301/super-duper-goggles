@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
+we import pandas, numpy, and matplotlib packages for to gain access to many functions for performing data analysis, 
+to perform a wide variety of mathematical operation on arrays, It provides a wide variety of function for 
+plotting in python.
 
 # In[1]:
 
@@ -11,7 +14,7 @@ import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
-
+Now we will load data set alone with Eleven variable has yes & no values. checking for null data.
 # In[2]:
 
 
@@ -71,6 +74,7 @@ df.isnull().sum()
 
 (df.isnull().sum()/(len(df)))*100
 
+Now for the counts of below varibles.
 
 # In[12]:
 
@@ -79,6 +83,7 @@ df['Gender'].value_counts()
 df['VisitFrequency'].value_counts()
 df['Like'].value_counts()
 
+Based on socio-demographics(Age & Gender)
 
 # In[13]:
 
@@ -103,7 +108,9 @@ f = sns.countplot(x=df['Age'],palette = 'hsv')
 f.bar_label(f.containers[0])
 plt.title('Customers Age Distribution')
 plt.show()
+McDonald's recieve more customers of age between 50-60 and 35-40.
 
+Based on pyschographics segmentation.
 
 # In[15]:
 
@@ -114,6 +121,7 @@ sns.catplot(x="Like", y="Age",data=df,
 plt.title('Likeness with repect to Age')
 plt.show()
 
+Now, label encoding for categorical & converting 11 cols with yes/no.
 
 # In[17]:
 
@@ -135,6 +143,7 @@ for i in cat:
 
 df
 
+Histogram of each attributes.
 
 # In[19]:
 
@@ -143,6 +152,7 @@ plt.rcParams['figure.figsize'] = (12,16)
 df.hist()
 plt.show()
 
+Considering only first 11 attributes.
 
 # In[20]:
 
@@ -150,6 +160,7 @@ plt.show()
 df_eleven = df.loc[:,cat]
 df_eleven
 
+Considering only the 11 cols and converting it into array.
 
 # In[21]:
 
@@ -157,6 +168,7 @@ df_eleven
 x = df.loc[:,cat].values
 x
 
+(Pre-poscessing)Principal component analysis.
 
 # In[22]:
 
@@ -180,6 +192,7 @@ pf = pd.DataFrame(data = pc, columns = names)
 
 pf
 
+Proportion of variance(from PC1 to PC11)
 
 # In[25]:
 
@@ -192,6 +205,7 @@ pca.explained_variance_ratio_
 
 np.cumsum(pca.explained_variance_ratio_)
 
+Correlation coefficient between original variable and the component.
 
 # In[27]:
 
